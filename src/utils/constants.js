@@ -4,7 +4,7 @@ const jwtToken = token ? token : "";
 const requestParams = {
   baseUrl: "https://uxcandy.com/~shapoval/test-task-backend/v2",
   headers: {
-    "Content-Type": "application/json",
+    "Content-Type": "multipart/form-data",
     "Authorization": jwtToken,
   },
 };
