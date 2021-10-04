@@ -46,7 +46,7 @@ function App() {
       setDefaultUser,
     }}>
       <NavBar />
-      <Main tasks={taskList} header={taskMessage} />
+      <Main tasks={taskList} onSubmit={setTaskList} header={taskMessage} />
     </AppContext.Provider>
   );
 }
