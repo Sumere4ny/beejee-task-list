@@ -1,7 +1,7 @@
-function Task({ userName, message }) {
+function Task({ username, message }) {
   return (
     <div className="tasklist__task">
-      <h1>{userName}</h1>
+      <h1>{username}</h1>
       <p>{message}</p>
     </div>
   );

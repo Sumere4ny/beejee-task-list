@@ -7,7 +7,7 @@ function Main({
   onSubmit,
 }) {
   return (
-    <main class="content">
+    <main className="content">
       <h1>{header}</h1>
       <TaskList tasks={tasks} />
       <TaskForm onSubmit={onSubmit}/>

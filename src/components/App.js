@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AppContext from '../contexts/context';
 import { api } from '../utils/api';
-import Main from './Main';
+import AppRouter from './AppRouter';
 import NavBar from './NavBar';
 
 /* eslint-disable */
@@ -19,13 +19,13 @@ function App() {
   React.useEffect(() => {
     Promise.all([api.getTasks(pageNumber)])
       .then((answer) => {
-        console.log(answer[0].message);
         if (answer[0].message.tasks.length) {
           setTaskList([...answer[0].message.tasks]);
           setTaskMessage('Список задач:');
         } else {
           setTaskMessage('Задач пока нет!');
         }
+        console.log(taskList);
       })
       .catch(err => console.log(err));
   }, []);
@@ -35,6 +35,11 @@ function App() {
       setIsAuth(true);
     }
   }, []);
+
+  function handleTaskSubmit(task) {
+    const newList = [...taskList, task];
+    setTaskList(newList);
+  }
 
   return (
     <AppContext.Provider value={{
@@ -46,7 +51,7 @@ function App() {
       setDefaultUser,
     }}>
       <NavBar />
-      <Main tasks={taskList} onSubmit={setTaskList} header={taskMessage} />
+      <AppRouter tasks={taskList} onSubmit={handleTaskSubmit} header={taskMessage} />
     </AppContext.Provider>
   );
 }
