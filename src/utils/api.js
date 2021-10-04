@@ -1,9 +1,11 @@
-import { requestParams, USER_NAME } from './constants.js';
+import requestParams from './constants';
 
 class Api {
-  constructor({ baseUrl, headers }) {
+  constructor({ baseUrl, headers, userName }) {
+    /* eslint-disable */
     this._baseUrl = baseUrl;
     this._headers = headers;
+    this._userName = userName;
   }
 
   // Общий обработчик запросов
@@ -15,29 +17,31 @@ class Api {
   }
 
   // Получаем массив уже существующих задач
-  getTasks(pageNumber) {
-    return fetch(this._baseUrl + USER_NAME + `&page=${pageNumber}`, {
+  async getTasks(pageNumber) {
+    const res = await fetch(this._baseUrl + this._userName + `&page=${pageNumber}`, {
       headers: this._headers,
-      method: 'GET'
-    })
-    .then(this._getResponseData);
+      method: 'GET',
+    });
+    return this._getResponseData(res);
   }
 
-  // Создание и удаление задачи
-  createTask({ userName, email, text }) {
-    return fetch(`${this._baseUrl}/create`, {
-      method: "POST",
+  // Создание и изменение задачи
+  async createTask({ userName, email, text }) {
+    const res = await fetch(`${this._baseUrl}/create`, {
+      method: 'POST',
       headers: this._headers,
       body: JSON.stringify({ userName, email, text })
-    }).then(this._getResponseData)
+    });
+    return this._getResponseData(res);
   }
 
-  changeTask({ id, text, status, token }) {
-    return fetch(`${this._baseUrl}/edit/${id}`, {
+  async changeTask({ id, text, status, token }) {
+    const res = await fetch(`${this._baseUrl}/edit/${id}`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({ text, status, token })
-    }).then(this._getResponseData)
+    });
+    return this._getResponseData(res);
   }
 }
 

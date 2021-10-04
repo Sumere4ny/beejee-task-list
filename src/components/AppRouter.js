@@ -12,7 +12,10 @@ const AppRouter = () => {
   return (
       <Switch>
         <Route path="/" page={pageNumber} exact component={ Main } />
+        <Route path="/create" component={ TaskForm } />
         <Route path="/login" component={ Login } />
       </Switch>
   )
 }
+
+export default AppRouter;

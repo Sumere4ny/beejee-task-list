@@ -1,17 +1,17 @@
-const token = localStorage.getItem('token')
-const jwtToken = token ? token : "";
+const token = localStorage.getItem('token');
+/* eslint-disable */
+const jwtToken = token ? token : '';
+const USER_NAME = '/?developer=sumere4ny';
+
+/* eslint-disable */
 
 const requestParams = {
   baseUrl: "https://uxcandy.com/~shapoval/test-task-backend/v2",
   headers: {
     "Content-Type": "multipart/form-data",
-    "Authorization": jwtToken,
+    // "Authorization": jwtToken,
   },
+  userName: USER_NAME,
 };
 
-const USER_NAME = '/?developer=sumere4ny';
-
-export default {
-  requestParams,
-  USER_NAME
-}
+export default requestParams;
