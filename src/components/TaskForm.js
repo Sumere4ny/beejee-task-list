@@ -34,7 +34,7 @@ function TaskForm({ onSubmit }) {
     onSubmit({
       email,
       username,
-      message,
+      text: message,
     });
     hanleClearInputs();
   }

@@ -26,20 +26,28 @@ class Api {
   }
 
   // Создание и изменение задачи
-  async createTask({ userName, email, text }) {
-    const res = await fetch(`${this._baseUrl}/create`, {
+  async createTask({ username, email, text }) {
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('email', email);
+    formData.append('text', text);
+    const res = await fetch(`${this._baseUrl}/create/${this._userName}`, {
       method: 'POST',
       headers: this._headers,
-      body: JSON.stringify({ userName, email, text })
+      body: formData,
     });
     return this._getResponseData(res);
   }
 
   async changeTask({ id, text, status, token }) {
+    const formData = new FormData();
+    formData.append('status', status);
+    formData.append('token', token);
+    formData.append('text', text);
     const res = await fetch(`${this._baseUrl}/edit/${id}`, {
       method: "POST",
       headers: this._headers,
-      body: JSON.stringify({ text, status, token })
+      body: formData,
     });
     return this._getResponseData(res);
   }

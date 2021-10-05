@@ -5,8 +5,8 @@ function TaskList({ tasks }) {
     <>
       {tasks.map((task) => <Task
       username={task.username}
-      message={task.message}
-      key={Math.floor(Date.now() / 100000)} />)}
+      message={task.text}
+      key={task.id} />)}
     </>
   );
 }

@@ -16,7 +16,7 @@ function App() {
   const [taskMessage, setTaskMessage] = useState('');
   const [taskList, setTaskList] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     Promise.all([api.getTasks(pageNumber)])
       .then((answer) => {
         if (answer[0].message.tasks.length) {
@@ -37,8 +37,13 @@ function App() {
   }, []);
 
   function handleTaskSubmit(task) {
-    const newList = [...taskList, task];
-    setTaskList(newList);
+    console.log(task);
+    api.createTask(task)
+    .then((answer) => {
+      console.log(answer);
+      ///setTaskList();
+    })
+    .catch(err => console.log(err));
   }
 
   return (
