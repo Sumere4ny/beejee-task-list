@@ -8,7 +8,7 @@ const USER_NAME = '/?developer=sumere4ny';
 const requestParams = {
   baseUrl: "https://uxcandy.com/~shapoval/test-task-backend/v2",
   headers: {
-    "Content-Type": "multipart/form-data",
+    // "Mime-Type": "multipart/form-data",
     // "Authorization": jwtToken,
   },
   userName: USER_NAME,

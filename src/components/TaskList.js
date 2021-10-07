@@ -6,6 +6,7 @@ function TaskList({ tasks }) {
       {tasks.map((task) => <Task
       username={task.username}
       message={task.text}
+      email={task.email}
       key={task.id} />)}
     </>
   );

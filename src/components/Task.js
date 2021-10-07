@@ -1,7 +1,10 @@
-function Task({ username, message }) {
+function Task({ username, message, email }) {
+  /* eslint-disable */
   return (
     <div className="tasklist__task">
-      <h1>{username}</h1>
+      <h2 style={{ 'textAlign': 'center' }}>Имя пользователя: {username}</h2>
+      <h3>Email: {email}</h3>
+      <p>Описание</p>
       <p>{message}</p>
     </div>
   );

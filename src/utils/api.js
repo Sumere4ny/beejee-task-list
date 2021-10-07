@@ -31,7 +31,7 @@ class Api {
     formData.append('username', username);
     formData.append('email', email);
     formData.append('text', text);
-    const res = await fetch(`${this._baseUrl}/create/${this._userName}`, {
+    const res = await fetch(`${this._baseUrl}/create${this._userName}`, {
       method: 'POST',
       headers: this._headers,
       body: formData,

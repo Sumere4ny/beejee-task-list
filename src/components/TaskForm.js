@@ -1,11 +1,8 @@
-import { useContext, useState } from 'react';
-import AppContext from '../contexts/context';
+import { useState } from 'react';
 
 function TaskForm({ onSubmit }) {
-  const { defaultUser } = useContext(AppContext);
-
-  const [email, setEmail] = useState(defaultUser.email);
-  const [username, setUsername] = useState(defaultUser.username);
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [message, setMessage] = useState('');
 
   function handleEmailChange(evt) {
@@ -47,7 +44,7 @@ function TaskForm({ onSubmit }) {
       <input name="email" type="email" value={email} onChange={handleEmailChange} />
       <label>Сообщение</label>
       <textarea name="message" type="text" onChange={handleMessageChange} />
-      <button className="task__submit" type="submit" value={message} >Создать</button>
+      <button className="task__submit" type="submit" value={message}>Создать</button>
     </form>
   );
 }

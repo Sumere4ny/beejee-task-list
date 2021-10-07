@@ -8,24 +8,18 @@ import NavBar from './NavBar';
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
-  const [defaultUser, setDefaultUser] = useState({
-    username: '',
-    email: '',
-  });
   const [pageNumber, setPageNumber] = useState(1);
   const [taskMessage, setTaskMessage] = useState('');
   const [taskList, setTaskList] = useState([]);
 
   useEffect(() => {
-    Promise.all([api.getTasks(pageNumber)])
+    api.getTasks(pageNumber)
       .then((answer) => {
-        if (answer[0].message.tasks.length) {
-          setTaskList([...answer[0].message.tasks]);
-          setTaskMessage('Список задач:');
-        } else {
-          setTaskMessage('Задач пока нет!');
+        if (answer.status == 'ok') {
+          setTaskList([...answer.message.tasks]);
+          setTaskMessage(answer.message.tasks.length ? 'Список задач:' : 'Задач пока нет!');
+          console.log(taskList);
         }
-        console.log(taskList);
       })
       .catch(err => console.log(err));
   }, []);
@@ -40,8 +34,12 @@ function App() {
     console.log(task);
     api.createTask(task)
     .then((answer) => {
-      console.log(answer);
-      ///setTaskList();
+      console.log(answer.message);
+      if (answer.status == 'ok') {
+        setTaskList([...taskList, data.message]);
+      } else {
+        setTaskMessage('Ошибка добавления');
+      }
     })
     .catch(err => console.log(err));
   }
@@ -52,8 +50,6 @@ function App() {
       setIsAuth,
       pageNumber,
       setPageNumber,
-      defaultUser,
-      setDefaultUser,
     }}>
       <NavBar />
       <AppRouter tasks={taskList} onSubmit={handleTaskSubmit} header={taskMessage} />

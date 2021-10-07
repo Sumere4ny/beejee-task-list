@@ -29,10 +29,11 @@
 }
 
 .tasklist__task {
-  width: content-fit;
+  width: 30vw;
   background: lightcoral;
   border: 2px solid lightseagreen;
   border-radius: 20px;
+  margin-bottom: 2em;
 }
 
 .task__form {
