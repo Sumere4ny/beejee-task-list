@@ -29,11 +29,12 @@
 }
 
 .tasklist__task {
-  width: 30vw;
+  width: 60vw;
   background: lightcoral;
   border: 2px solid lightseagreen;
   border-radius: 20px;
   margin-bottom: 2em;
+  line-height: 1;
 }
 
 .tasklist__task:last-of-type {
@@ -62,6 +63,13 @@
   font-weight: 600;
   margin-bottom: 1em;
   padding: .1em 1em;
+}
+
+.task__form_input-error {
+  font-size: 10px;
+  color: red;
+  padding: 5px 0;
+  height: 1em;
 }
 
 .task__submit {

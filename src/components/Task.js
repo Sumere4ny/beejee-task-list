@@ -3,7 +3,7 @@ function Task({ username, message, email }) {
   return (
     <div className="tasklist__task">
       <h2 style={{ 'textAlign': 'center' }}>Имя пользователя: {username}</h2>
-      <h3>Email: {email}</h3>
+      <p>Email: <a href={`mailto: ${email}`}>{email}</a></p>
       <p>Описание</p>
       <p>{message}</p>
     </div>
