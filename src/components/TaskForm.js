@@ -4,6 +4,8 @@ function TaskForm({ onSubmit }) {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [message, setMessage] = useState('');
+  const [showForm, setShowForm] = useState(false);
+  // const [errorMessage, setErrorMessage] = useState('');
 
   function handleEmailChange(evt) {
     setEmail(evt.target.value);
@@ -15,6 +17,10 @@ function TaskForm({ onSubmit }) {
 
   function handleMessageChange(evt) {
     setMessage(evt.target.value);
+  }
+
+  function handleShowForm() {
+    setShowForm(!showForm);
   }
 
   function hanleClearInputs() {
@@ -34,18 +40,40 @@ function TaskForm({ onSubmit }) {
       text: message,
     });
     hanleClearInputs();
+    evt.target.reset();
   }
 
   return (
-    <form className="task__form" onSubmit={handleSubmit}>
-      <label>Имя пользователя</label>
-      <input name="username" type="text" value={username} onChange={handleUserChange} />
-      <label>E-mail</label>
-      <input name="email" type="email" value={email} onChange={handleEmailChange} />
-      <label>Сообщение</label>
-      <textarea name="message" type="text" onChange={handleMessageChange} />
-      <button className="task__submit" type="submit" value={message}>Создать</button>
-    </form>
+    <>
+      <div class="button__show-form" onClick={handleShowForm}>{showForm ? 'Скрыть форму' : 'Добавить задание'}</div>
+      <form className={`task__form ${showForm && 'task__form_visible'}`} onSubmit={handleSubmit}>
+        <label>Имя пользователя</label>
+        <input
+          name="username"
+          id="username"
+          type="text"
+          minLength="2"
+          maxLength="40"
+          value={username}
+          onChange={handleUserChange}
+          required />
+        <span id='username-error' className='task__form_input-error'></span>
+        <label>E-mail</label>
+        <input
+          name="email"
+          id="email"
+          type="email"
+          minLength="5"
+          maxLength="40"
+          value={email}
+          onChange={handleEmailChange}
+          required />
+        <span id='email-error' className='task__form_input-error'></span>
+        <label>Сообщение</label>
+        <textarea name="message" type="text" onChange={handleMessageChange} />
+        <button className="task__submit" type="submit" value={message}>Создать</button>
+      </form>
+    </>
   );
 }
 

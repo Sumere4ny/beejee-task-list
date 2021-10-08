@@ -36,12 +36,32 @@
   margin-bottom: 2em;
 }
 
+.tasklist__task:last-of-type {
+  margin: 0;
+}
+
 .task__form {
   width: 30vw;
   margin: 0 auto;
-  display:flex;
   justify-content: center;
   flex-direction: column;
+  display: none;
+  margin-bottom: 1em;
+}
+
+.task__form_visible {
+  display: flex;
+}
+
+.button__show-form {
+  cursor: pointer;
+  border: 2px solid slateblue;
+  border-radius: 5px;
+  color: darkcyan;
+  font-size: medium;
+  font-weight: 600;
+  margin-bottom: 1em;
+  padding: .1em 1em;
 }
 
 .task__submit {

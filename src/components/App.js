@@ -32,7 +32,8 @@ function App() {
 
   function handleTaskSubmit(task) {
     console.log(task);
-    api.createTask(task)
+    setTaskList([...taskList, task]);
+    /* api.createTask(task)
     .then((answer) => {
       console.log(answer.message);
       if (answer.status == 'ok') {
@@ -41,7 +42,7 @@ function App() {
         setTaskMessage('Ошибка добавления');
       }
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log(err)); */
   }
 
   return (

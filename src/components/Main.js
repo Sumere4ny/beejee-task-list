@@ -8,9 +8,9 @@ function Main({
 }) {
   return (
     <main className="content">
+      <TaskForm onSubmit={onSubmit}/>
       <h1>{header}</h1>
       <TaskList tasks={tasks} />
-      <TaskForm onSubmit={onSubmit}/>
     </main>
   );
 }
