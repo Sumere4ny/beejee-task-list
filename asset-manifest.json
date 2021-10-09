@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/static/css/main.408eeea4.chunk.css",
-    "main.js": "/static/js/main.f93d791a.chunk.js",
-    "main.js.map": "/static/js/main.f93d791a.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.f22b879c.js",
-    "runtime-main.js.map": "/static/js/runtime-main.f22b879c.js.map",
-    "static/js/2.ab96ee22.chunk.js": "/static/js/2.ab96ee22.chunk.js",
-    "static/js/2.ab96ee22.chunk.js.map": "/static/js/2.ab96ee22.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.408eeea4.chunk.css.map": "/static/css/main.408eeea4.chunk.css.map",
-    "static/js/2.ab96ee22.chunk.js.LICENSE.txt": "/static/js/2.ab96ee22.chunk.js.LICENSE.txt"
+    "main.css": "/beejee-task-list/static/css/main.408eeea4.chunk.css",
+    "main.js": "/beejee-task-list/static/js/main.8bd24df0.chunk.js",
+    "main.js.map": "/beejee-task-list/static/js/main.8bd24df0.chunk.js.map",
+    "runtime-main.js": "/beejee-task-list/static/js/runtime-main.d4c85af1.js",
+    "runtime-main.js.map": "/beejee-task-list/static/js/runtime-main.d4c85af1.js.map",
+    "static/js/2.ab96ee22.chunk.js": "/beejee-task-list/static/js/2.ab96ee22.chunk.js",
+    "static/js/2.ab96ee22.chunk.js.map": "/beejee-task-list/static/js/2.ab96ee22.chunk.js.map",
+    "index.html": "/beejee-task-list/index.html",
+    "static/css/main.408eeea4.chunk.css.map": "/beejee-task-list/static/css/main.408eeea4.chunk.css.map",
+    "static/js/2.ab96ee22.chunk.js.LICENSE.txt": "/beejee-task-list/static/js/2.ab96ee22.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.f22b879c.js",
+    "static/js/runtime-main.d4c85af1.js",
     "static/js/2.ab96ee22.chunk.js",
     "static/css/main.408eeea4.chunk.css",
-    "static/js/main.f93d791a.chunk.js"
+    "static/js/main.8bd24df0.chunk.js"
   ]
 }
