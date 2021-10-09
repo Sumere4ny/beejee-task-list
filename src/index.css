@@ -1,5 +1,5 @@
 .navigation__bar {
-  width: calc(content-fit - 90%);
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -36,6 +36,10 @@
   flex-direction: column;
 }
 
+.main__content_login {
+  width: 100%;
+}
+
 .main__sidebar {
   width: 30%;
   display:flex;
@@ -62,6 +66,15 @@
   display: flex;
   justify-content: space-around;
   width: 30%;
+}
+
+.login__form {
+  width: 20em;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 1em;
 }
 
 .task__form {

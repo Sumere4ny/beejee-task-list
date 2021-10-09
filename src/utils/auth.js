@@ -1,9 +1,10 @@
-import requestParams from './constants.js';
-
+import requestParams from './constants';
+/* eslint-disable */
 class Auth {
-  constructor(options) {
-    this._baseUrl = options.baseUrl;
-    this._headers = options.headers;
+  constructor({ baseUrl, headers, userName }) {
+    this._baseUrl = baseUrl;
+    this._headers = headers;
+    this._userName = userName;
   }
 
   _handleResponse(res) {
@@ -13,14 +14,14 @@ class Auth {
     return res.json();
   }
 
-  login(username, password) {
-    return fetch(`${this._baseUrl}/login`, {
+  login({ username, password }) {
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+    return fetch(`${this._baseUrl}/login` + this._userName, {
       method: "POST",
       headers: this._headers,
-      body: JSON.stringify({
-        username,
-        password
-      }),
+      body: formData,
     }).then(this._handleResponse);
   }
 }

@@ -17,11 +17,12 @@ function App() {
 
   useEffect(() => {
     api.getTasks(pageNumber, sortField, sortDirection)
-      .then((answer) => {
-        if (answer.status == 'ok') {
-          setTaskList([...answer.message.tasks]);
-          setTaskMessage(answer.message.tasks.length ? 'Список задач:' : 'Задач пока нет!');
-          setTasksLength(Number(answer.message.total_task_count));
+      .then(({ status, message }) => {
+        if (status == 'ok') {
+          setTaskList([...message.tasks]);
+          setTaskMessage(message.tasks.length
+            ? 'Список задач:' : 'Задач пока нет!');
+          setTasksLength(Number(message.total_task_count));
         }
       })
       .catch(err => console.log(err));
@@ -30,6 +31,7 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem('token')) {
       setIsAuth(true);
+      console.log(localStorage.getItem('token'));
     }
   }, []);
 
@@ -37,15 +39,21 @@ function App() {
     console.log(task);
     setTaskList([...taskList, task]);
     api.createTask(task)
-    .then((answer) => {
-      console.log(answer.message);
-      if (answer.status == 'ok') {
+    .then(({ status, message }) => {
+      console.log(message);
+      if (status == 'ok') {
+        setTaskMessage('Успешно добавлено');
         setTasksLength(tasksLength + 1);
       } else {
         setTaskMessage('Ошибка добавления');
       }
     })
     .catch(err => console.log(err));
+  }
+
+  function handleLogout() {
+    localStorage.removeItem('token');
+    setIsAuth(false);
   }
 
   return (
@@ -57,7 +65,7 @@ function App() {
       setSortField,
       setSortDirection,
     }}>
-      <NavBar />
+      <NavBar onLogout={handleLogout} />
       <AppRouter
         tasks={taskList}
         taskTotal={tasksLength}

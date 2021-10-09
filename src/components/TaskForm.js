@@ -9,17 +9,17 @@ function TaskForm({ onSubmit }) {
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [nameValidationMessage, setNameValidationMessage] = useState('');
   const [emailValidationMessage, setEmailValidationMessage] = useState('');
-  const [isProfileFormValid, setIsProfileFormValid] = useState(false);
+  const [isTaskFormValid, setIsTaskFormValid] = useState(false);
 
   useEffect(() => {
-    function checkProfileFormValidity() {
+    function checkTaskFormValidity() {
       if (isNameValid && isEmailValid && username && email) {
-        setIsProfileFormValid(true);
+        setIsTaskFormValid(true);
       } else {
-        setIsProfileFormValid(false);
+        setIsTaskFormValid(false);
       }
     }
-    checkProfileFormValidity();
+    checkTaskFormValidity();
   }, [username, email, isNameValid, isEmailValid]);
 
   useEffect(() => {
@@ -101,7 +101,7 @@ function TaskForm({ onSubmit }) {
         <label>Сообщение</label>
         <textarea name="message" type="text" onChange={handleMessageChange} />
         <button className="task__submit" type="submit"
-          value={message} disabled={!isProfileFormValid}>Создать</button>
+          disabled={!isTaskFormValid}>Создать</button>
       </form>
     </>
   );

@@ -9,7 +9,7 @@ const AppRouter = ({
   header,
 }) => (
       <Switch>
-        <Route path="/" exac>
+        <Route exact path="/">
           <Main
             tasks={tasks}
             taskTotal={taskTotal}
