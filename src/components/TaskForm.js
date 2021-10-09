@@ -74,7 +74,7 @@ function TaskForm({ onSubmit }) {
   return (
     <>
       <div className="button__show-form"
-        onClick={handleShowForm}>{showForm ? 'Скрыть форму' : 'Добавить задание'}</div>
+        onClick={handleShowForm}>{showForm ? 'Скрыть форму' : 'Добавить задачу'}</div>
       <form className={`task__form ${showForm && 'task__form_visible'}`} onSubmit={handleSubmit}>
         <label>Имя пользователя</label>
         <input

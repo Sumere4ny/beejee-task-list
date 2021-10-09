@@ -1,13 +1,15 @@
 import Task from './Task';
 
-function TaskList({ tasks }) {
+function TaskList({ tasks, onEdit }) {
   return (
     <>
       {tasks.map((task) => <Task
       username={task.username}
       message={task.text}
+      status={task.status}
       email={task.email}
-      key={task.id} />)}
+      key={task.id}
+      editTask={onEdit} />)}
     </>
   );
 }

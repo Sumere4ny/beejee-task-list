@@ -56,6 +56,23 @@
   border-radius: 20px;
   margin-bottom: 2em;
   line-height: 1;
+  position: relative;
+}
+
+.tasklist__task_edit {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  background: url('https://sumere4ny.github.io/mesto-react/static/media/edit-button.af236f6c.svg');
+  background-size:contain;
+  box-shadow: 2px 2px 2px black;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+}
+
+.tasklist__task_done {
+  background: lightseagreen;
 }
 
 .tasklist__task:last-of-type {
