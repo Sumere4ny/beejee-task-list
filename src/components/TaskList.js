@@ -9,6 +9,7 @@ function TaskList({ tasks, onEdit }) {
       status={task.status}
       email={task.email}
       key={task.id}
+      id={task.id}
       editTask={onEdit} />)}
     </>
   );

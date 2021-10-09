@@ -14,6 +14,7 @@ function App() {
   const [tasksLength, setTasksLength] = useState(0);
   const [taskMessage, setTaskMessage] = useState('');
   const [taskList, setTaskList] = useState([]);
+  const [needUpdate, setNeedUpdate] = useState(false);
 
   useEffect(() => {
     api.getTasks(pageNumber, sortField, sortDirection)
@@ -26,12 +27,12 @@ function App() {
         }
       })
       .catch(err => console.log(err));
-  }, [pageNumber, tasksLength, sortField, sortDirection]);
+      setNeedUpdate(false);
+  }, [pageNumber, tasksLength, sortField, sortDirection, needUpdate]);
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
       setIsAuth(true);
-      console.log(localStorage.getItem('token'));
     }
   }, []);
 
@@ -62,6 +63,7 @@ function App() {
       setIsAuth,
       pageNumber,
       setPageNumber,
+      setNeedUpdate,
       setSortField,
       setSortDirection,
     }}>

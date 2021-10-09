@@ -47,7 +47,7 @@ class Api {
     formData.append('status', status);
     formData.append('token', token);
     formData.append('text', text);
-    const res = await fetch(`${this._baseUrl}/edit/${id}`, {
+    const res = await fetch(`${this._baseUrl}/edit/${id}` + this._userName, {
       method: "POST",
       headers: this._headers,
       body: formData,

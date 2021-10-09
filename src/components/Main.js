@@ -11,11 +11,11 @@ const Main = ({
   header,
   onSubmit,
 }) => {
-  const [taskToEdit, setTaskToEdit] = useState({});
+  const [taskToEdit, setTaskToEdit] = useState();
 
   const handleEdit = (task) => {
     setTaskToEdit(task);
-  }
+  };
 
   return (
     <main className="main">
@@ -27,10 +27,10 @@ const Main = ({
       </div>
       <div className="main__sidebar">
         <TaskForm onSubmit={onSubmit} />
-        {task && <TaskEdit task={taskToEdit} />}
+        {taskToEdit && <TaskEdit task={taskToEdit} clearTask={() => setTaskToEdit()} />}
       </div>
     </main>
-);
-}
+  );
+};
 
 export default Main;

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import AppContext from '../contexts/context';
 
 function Task({
-  username, message, status, email, key, editTask,
+  username, message, status, email, id, editTask,
 }) {
   /* eslint-disable */
   const taskList = {
@@ -16,7 +16,7 @@ function Task({
 
   const handleTaskEdit = () => {
     // showTaskEditForm();
-    editTask({ key, status, text })
+    editTask({ id, status, text: message, email, username })
   }
 
   return (
