@@ -1,28 +1,24 @@
 import { Switch, Route } from 'react-router-dom';
-import { useContext } from 'react';
-import AppContext from '../contexts/context';
 import Login from './Login';
 import Main from './Main';
 
 const AppRouter = ({
   tasks,
+  taskTotal,
   onSubmit,
   header,
-}) => {
-  const { pageNumber } = useContext(AppContext);
-
-  return (
+}) => (
       <Switch>
-        <Route path="/" page={pageNumber} exac>
+        <Route path="/" exac>
           <Main
             tasks={tasks}
+            taskTotal={taskTotal}
             onSubmit={onSubmit}
             header={header}
           />
         </Route>
         <Route path="/login" component={ Login } />
       </Switch>
-  );
-};
+);
 
 export default AppRouter;

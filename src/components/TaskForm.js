@@ -82,7 +82,7 @@ function TaskForm({ onSubmit }) {
           id="username"
           type="text"
           minLength="2"
-          maxLength="40"
+          maxLength="20"
           value={username}
           onChange={handleNameChange}
           required />
@@ -93,7 +93,7 @@ function TaskForm({ onSubmit }) {
           id="email"
           type="email"
           minLength="5"
-          maxLength="40"
+          maxLength="20"
           value={email}
           onChange={handleEmailChange}
           required />

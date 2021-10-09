@@ -9,20 +9,23 @@ import NavBar from './NavBar';
 function App() {
   const [isAuth, setIsAuth] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
+  const [sortField, setSortField] = useState(null);
+  const [sortDirection, setSortDirection] = useState(null);
+  const [tasksLength, setTasksLength] = useState(0);
   const [taskMessage, setTaskMessage] = useState('');
   const [taskList, setTaskList] = useState([]);
 
   useEffect(() => {
-    api.getTasks(pageNumber)
+    api.getTasks(pageNumber, sortField, sortDirection)
       .then((answer) => {
         if (answer.status == 'ok') {
           setTaskList([...answer.message.tasks]);
           setTaskMessage(answer.message.tasks.length ? 'Список задач:' : 'Задач пока нет!');
-          console.log(taskList);
+          setTasksLength(Number(answer.message.total_task_count));
         }
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [pageNumber, tasksLength, sortField, sortDirection]);
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -33,16 +36,16 @@ function App() {
   function handleTaskSubmit(task) {
     console.log(task);
     setTaskList([...taskList, task]);
-    /* api.createTask(task)
+    api.createTask(task)
     .then((answer) => {
       console.log(answer.message);
       if (answer.status == 'ok') {
-        setTaskList([...taskList, data.message]);
+        setTasksLength(tasksLength + 1);
       } else {
         setTaskMessage('Ошибка добавления');
       }
     })
-    .catch(err => console.log(err)); */
+    .catch(err => console.log(err));
   }
 
   return (
@@ -51,9 +54,15 @@ function App() {
       setIsAuth,
       pageNumber,
       setPageNumber,
+      setSortField,
+      setSortDirection,
     }}>
       <NavBar />
-      <AppRouter tasks={taskList} onSubmit={handleTaskSubmit} header={taskMessage} />
+      <AppRouter
+        tasks={taskList}
+        taskTotal={tasksLength}
+        onSubmit={handleTaskSubmit}
+        header={taskMessage} />
     </AppContext.Provider>
   );
 }
