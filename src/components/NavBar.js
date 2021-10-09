@@ -4,7 +4,7 @@ import AppContext from '../contexts/context';
 
 const NavBar = ({ onLogout }) => {
   const { isAuth } = useContext(AppContext);
-  console.log(isAuth);
+
   return (
   <nav className="navigation__bar">
   <Link className="navigation__link" to="/">Задачи</Link>
