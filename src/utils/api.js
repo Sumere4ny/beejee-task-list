@@ -18,7 +18,7 @@ class Api {
 
   // Получаем массив уже существующих задач
   async getTasks(pageNumber, sortField, sortDirection) {
-    let sortOptions = sortField
+    let sortOptions = sortField || sortDirection
       ? `&sort_field=${sortField}` + `&sort_direction=${sortDirection}`
       : '';
     const res = await fetch(this._baseUrl + this._userName + `&page=${pageNumber}` + sortOptions, {
