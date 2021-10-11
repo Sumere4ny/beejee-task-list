@@ -37,14 +37,14 @@ function App() {
   }, []);
 
   function handleTaskSubmit(task) {
-    console.log(task);
-    setTaskList([...taskList, task]);
     api.createTask(task)
     .then(({ status, message }) => {
       console.log(message);
       if (status == 'ok') {
         setTaskMessage('Успешно добавлено');
-        setTasksLength(tasksLength + 1);
+        setTimeout(() => {
+          setTasksLength(tasksLength + 1);
+        }, 2000);
       } else {
         setTaskMessage('Ошибка добавления');
       }
