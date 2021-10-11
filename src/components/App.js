@@ -39,7 +39,6 @@ function App() {
   function handleTaskSubmit(task) {
     api.createTask(task)
     .then(({ status, message }) => {
-      console.log(message);
       if (status == 'ok') {
         setTaskMessage('Успешно добавлено');
         setTimeout(() => {

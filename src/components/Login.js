@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import AppContext from '../contexts/context';
-import { auth } from '../utils/auth';
+import { api } from '../utils/api';
 
 function Login() {
   const history = useHistory();
@@ -51,10 +51,9 @@ function Login() {
     if (!(username || password)) {
       return;
     }
-    auth.login({ username, password })
+    api.login({ username, password })
       .then(({ status, message }) => {
         // eslint-disable-next-line
-        console.log(status);
         if (status === 'ok') {
           setAuthToken(message.token);
           setIsAuth(true);

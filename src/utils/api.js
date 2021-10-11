@@ -16,6 +16,19 @@ class Api {
     return res.json();
   }
 
+  // Авторизация пользователя
+  async login({ username, password }) {
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+    const res = await fetch(`${this._baseUrl}/login` + this._userName, {
+      method: "POST",
+      headers: this._headers,
+      body: formData,
+    });
+    return this._getResponseData(res);
+  }
+
   // Получаем массив уже существующих задач
   async getTasks(pageNumber, sortField, sortDirection) {
     let sortOptions = sortField || sortDirection

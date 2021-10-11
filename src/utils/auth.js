@@ -14,16 +14,6 @@ class Auth {
     return res.json();
   }
 
-  login({ username, password }) {
-    const formData = new FormData();
-    formData.append('username', username);
-    formData.append('password', password);
-    return fetch(`${this._baseUrl}/login` + this._userName, {
-      method: "POST",
-      headers: this._headers,
-      body: formData,
-    }).then(this._handleResponse);
-  }
 }
 
 export const auth = new Auth(requestParams);
